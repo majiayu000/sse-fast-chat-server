@@ -68,6 +68,7 @@ def ask_statesman(query: str):
                 print(f" is cor {is_correct}")
                 
                 yield sse_pack('message',  event_text, is_correct)
+                is_correct = None
             else:
                 yield sse_pack('message',  event_text)
             # yield sse_pack('message', {'content': event_text})
