@@ -82,6 +82,17 @@ def ask_statesman(query: str):
 def read_root():
     return {"Hello": "World"}
 
+from fastapi import Request
+
+@app.post("/test")
+async def get_request(request: Request):
+    print(request.body)
+    print(request)
+    body = await request.body()
+    print("Request body:", body.decode())
+    print(type(body.decode()))
+    
+    return {"message": "Request body printed successfully"}
 
 def sse_pack(event, message, flag=None):
     # Format data as an SSE message
